@@ -5,6 +5,8 @@ See also [general changes](Changes.md).
 
 Elements that were deprecated in 1.x will be removed.
 
+The optional argument of `s9e\TextFormatter\Configurator\JavaScript::getParser()` has been removed. The JavaScript parser is always based on the instance's configurator.
+
 
 ## 1.3.0
 

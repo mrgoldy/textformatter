@@ -236,19 +236,18 @@ class Configurator implements ConfigProvider
 		// Add the generated tag rules
 		$this->addTagRules();
 
-		// Prepare the parser config
-		$config = $this->asConfig();
-		if (isset($this->javascript))
-		{
-			$return['js'] = $this->javascript->getParser(ConfigHelper::filterConfig($config, 'JS'));
-		}
-
 		// Remove JS-specific data from the config
-		$config = ConfigHelper::filterConfig($config, 'PHP');
+		$config = ConfigHelper::filterConfig($this->asConfig(), 'PHP');
 		ConfigHelper::optimizeArray($config);
 
 		// Create a parser
 		$return['parser'] = new Parser($config);
+
+		// Add the JavaScript parser
+		if (isset($this->javascript))
+		{
+			$return['js'] = $this->javascript->getParser();
+		}
 
 		return $return;
 	}
