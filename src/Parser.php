@@ -2010,8 +2010,34 @@ class Parser
 	*/
 	protected function sortTags()
 	{
-		usort($this->tagStack, __CLASS__ . '::compareTags');
+		if (!$this->sortFast())
+		{
+			usort($this->tagStack, __CLASS__ . '::compareTags');
+		}
 		$this->tagStackIsSorted = true;
+	}
+
+	/**
+	* Sort tags by position if none of them overlap
+	*
+	* @return bool Whether the tag stack is sorted
+	*/
+	protected function sortFast()
+	{
+		$sortArray = [];
+		foreach ($this->tagStack as $tag)
+		{
+			$pos = $tag->getPos();
+			if (isset($sortArray[$pos]))
+			{
+				return false;
+			}
+			$sortArray[$pos] = $tag;
+		}
+		krsort($sortArray, SORT_NUMERIC);
+		$this->tagStack = array_values($sortArray);
+
+		return true;
 	}
 
 	/**
