@@ -73,11 +73,11 @@ class RegexpTest extends Test
 	}
 
 	/**
-	* @testdox The JS regexp has a global flag if isGlobal is true
+	* @testdox The JS regexp has a global flag
 	*/
 	public function testJSGlobal()
 	{
-		$regexp = new Regexp('/x/', true);
+		$regexp = new Regexp('/x/');
 		$this->assertEquals('/x/g', $regexp->getJS());
 	}
 
@@ -157,7 +157,7 @@ class RegexpTest extends Test
 	*/
 	public function testFilterConfigJS()
 	{
-		$regexp = new Regexp('/foo/', true);
+		$regexp = new Regexp('/foo/');
 
 		$this->assertEquals(
 			new Code('/foo/g'),

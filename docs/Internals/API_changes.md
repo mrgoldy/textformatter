@@ -2,6 +2,11 @@
 
 See also [general changes](Changes.md).
 
+## 3.0.0
+
+The second argument of `s9e\TextFormatter\Configurator\Items\Regexp` constructor has been removed. All JavaScript regexps have their global flag set. This can be overridden if necessary by manually setting a JavaScript representation via `setJS()`.
+
+
 ## 2.0.0
 
 The following elements have been removed:

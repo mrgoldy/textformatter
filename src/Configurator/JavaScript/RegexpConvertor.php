@@ -23,11 +23,10 @@ abstract class RegexpConvertor
 	/**
 	* Convert a PCRE regexp to a JavaScript regexp
 	*
-	* @param  string $regexp   PCRE regexp
-	* @param  bool   $isGlobal Whether the global flag should be set
-	* @return Code             JavaScript regexp
+	* @param  string $regexp PCRE regexp
+	* @return Code           JavaScript regexp
 	*/
-	public static function toJS($regexp, $isGlobal = false)
+	public static function toJS($regexp)
 	{
 		$regexpInfo = RegexpParser::parse($regexp);
 		$dotAll     = (strpos($regexpInfo['modifiers'], 's') !== false);
@@ -104,17 +103,13 @@ abstract class RegexpConvertor
 		}
 
 		$modifiers = preg_replace('#[^im]#', '', $regexpInfo['modifiers']);
-		if ($isGlobal)
-		{
-			$modifiers .= 'g';
-		}
 
 		if ($regexp === '')
 		{
 			$regexp = '(?:)';
 		}
 
-		return '/' . self::escapeLineTerminators($regexp) . '/' . $modifiers;
+		return '/' . self::escapeLineTerminators($regexp) . '/g' . $modifiers;
 	}
 
 	/**

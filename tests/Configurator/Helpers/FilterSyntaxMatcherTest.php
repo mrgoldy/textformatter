@@ -165,9 +165,9 @@ class FilterSyntaxMatcherTest extends Test
 				[
 					'filter' => 'preg_replace',
 					'params' => [
-						['Value', new Regexp('/foo/', true)],
-						['Value', ''                       ],
-						['Name',  'attrValue'              ]
+						['Value', new Regexp('/foo/')],
+						['Value', ''                 ],
+						['Name',  'attrValue'        ]
 					]
 				]
 			],
@@ -176,9 +176,9 @@ class FilterSyntaxMatcherTest extends Test
 				[
 					'filter' => 'preg_replace',
 					'params' => [
-						['Value', new Regexp('/foo/is', true)],
-						['Value', ''                         ],
-						['Name',  'attrValue'                ]
+						['Value', new Regexp('/foo/is')],
+						['Value', ''                   ],
+						['Name',  'attrValue'          ]
 					]
 				]
 			],

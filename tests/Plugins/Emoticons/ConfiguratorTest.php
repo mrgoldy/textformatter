@@ -229,8 +229,8 @@ class ConfiguratorTest extends Test
 
 		$config = ConfigHelper::filterConfig($plugin->asConfig(), 'JS');
 
-		$this->assertEquals(new Code('/x/g', 'g'), $config['regexp']);
-		$this->assertEquals(new Code('/\\w/'),     $config['notAfter']);
+		$this->assertEquals(new Code('/x/g'),  $config['regexp']);
+		$this->assertEquals(new Code('/\\w/'), $config['notAfter']);
 	}
 
 	/**

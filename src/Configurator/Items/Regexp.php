@@ -17,11 +17,6 @@ use s9e\TextFormatter\Configurator\JavaScript\RegexpConvertor;
 class Regexp implements ConfigProvider, FilterableConfigValue
 {
 	/**
-	* @var bool Whether this regexp should have the global flag set in JavaScript
-	*/
-	protected $isGlobal;
-
-	/**
 	* @var string JavaScript regexp, with delimiters and modifiers, e.g. "/foo/i"
 	*/
 	protected $jsRegexp;
@@ -34,17 +29,16 @@ class Regexp implements ConfigProvider, FilterableConfigValue
 	/**
 	* Constructor
 	*
-	* @param  string $regexp PCRE regexp, with delimiters and modifiers, e.g. "/foo/i"
+	* @param string $regexp PCRE regexp, with delimiters and modifiers, e.g. "/foo/i"
 	*/
-	public function __construct($regexp, $isGlobal = false)
+	public function __construct($regexp)
 	{
 		if (@preg_match($regexp, '') === false)
 		{
 			throw new InvalidArgumentException('Invalid regular expression ' . var_export($regexp, true));
 		}
 
-		$this->regexp   = $regexp;
-		$this->isGlobal = $isGlobal;
+		$this->regexp = $regexp;
 	}
 
 	/**
@@ -92,7 +86,7 @@ class Regexp implements ConfigProvider, FilterableConfigValue
 	{
 		if (!isset($this->jsRegexp))
 		{
-			$this->jsRegexp = RegexpConvertor::toJS($this->regexp, $this->isGlobal);
+			$this->jsRegexp = RegexpConvertor::toJS($this->regexp);
 		}
 
 		return $this->jsRegexp;

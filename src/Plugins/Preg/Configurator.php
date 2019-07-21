@@ -69,7 +69,7 @@ class Configurator extends ConfiguratorBase
 		foreach ($this->collection as list($tagName, $regexp, $passthroughIdx))
 		{
 			$captures = RegexpParser::getCaptureNames($regexp);
-			$pregs[]  = [$tagName, new Regexp($regexp, true), $passthroughIdx, $captures];
+			$pregs[]  = [$tagName, new Regexp($regexp), $passthroughIdx, $captures];
 		}
 
 		return ['generics' => $pregs];

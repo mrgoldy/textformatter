@@ -139,7 +139,7 @@ class Configurator extends ConfiguratorBase
 				$regexp .= 'u';
 			}
 
-			$config['regexps'][] = new Regexp($regexp, true);
+			$config['regexps'][] = new Regexp($regexp);
 		}
 
 		return $config;

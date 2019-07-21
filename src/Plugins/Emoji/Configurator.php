@@ -96,7 +96,7 @@ class Configurator extends ConfiguratorBase
 		if (!empty($custom))
 		{
 			$regexp                 = '/' . RegexpBuilder::fromList($custom) . '/';
-			$config['customRegexp'] = new Regexp($regexp, true);
+			$config['customRegexp'] = new Regexp($regexp);
 
 			$quickMatch = ConfigHelper::generateQuickMatchFromList($custom);
 			if ($quickMatch !== false)

@@ -226,7 +226,7 @@ class FilterSyntaxMatcher extends AbstractRecursiveMatcher
 	{
 		$regexp .= str_replace('g', '', $flags);
 
-		return new Regexp($regexp, true);
+		return new Regexp($regexp);
 	}
 
 	/**
